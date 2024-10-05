@@ -2,4 +2,4 @@
 pip install numpy pandas matplotlib seaborn jupyter streamlit
 
 # Visualisasi daya
-membuat visualisasi data menggunakan dashboard.py streamlit di https://appzharfan-fasya-gdp2qkqh2vndektvdugnud.streamlit.app/
+membuat visualisasi data menggunakan dashboard.py streamlit di https://zharfanfasya11.streamlit.app/
