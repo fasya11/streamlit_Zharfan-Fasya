@@ -2,7 +2,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
-from babel.numbers import format_currency
 import os
 
 # Set the Seaborn style
@@ -22,10 +21,10 @@ def bymonth(df):
     return monthly_rental
 
 # Load dataframes
-day_df = pd.read_csv('submission/dashboard/day_modif_df.csv')
-hour_df = pd.read_csv('submission/dashboard/hour_modif_df.csv')
-season_df = pd.read_csv('submission/dashboard/melt_season_df.csv')
-weather_df = pd.read_csv('submission/dashboard/melt_weathersit_df.csv')
+day_df = pd.read_csv('day_modif_df.csv')
+hour_df = pd.read_csv('hour_modif_df.csv')
+season_df = pd.read_csv('melt_season_df.csv')
+weather_df = pd.read_csv('melt_weathersit_df.csv')
 
 # Convert date columns to datetime format
 day_df['date_day'] = pd.to_datetime(day_df['date_day'])
