@@ -225,5 +225,37 @@ elif qa_option == 'What patterns do cyclists make throughout the changing season
         Conclusion: Bicycle usage is higher during summer and significantly lower during winter and the rainy season.
     """)
 
+
+
+# Data RFM
+st.subheader('Data RFM')
+# Data RFM
+day_df['date_day'] = pd.to_datetime(day_df['date_day'])
+
+# Recency: calculate how many days since the last transaction for each date_day
+recency_df = pd.DataFrame({
+    'date_day': day_df['date_day'],
+    'recency': (day_df['date_day'].max() - day_df['date_day']).dt.days
+}).drop_duplicates()
+
+# Frequency: calculate the number of transactions per day
+frequency_df = day_df.groupby('date_day').size().reset_index(name='frequency')
+
+# Monetary: sum of total per day
+monetary_df = day_df.groupby('date_day')['Total'].sum().reset_index(name='monetary')
+
+# Merge all three DataFrames (recency, frequency, monetary) on 'date_day'
+rf_df = recency_df.merge(frequency_df, on='date_day')
+rfm_df = rf_df.merge(monetary_df, on='date_day')
+
+# Display the RFM values
+st.write("RFM Analysis:")
+st.write("Recency:", recency_df)
+st.write("Frequency:", frequency_df)
+st.write("Monetary:", monetary_df)
+st.write("RFM:", rfm_df)
+
+st.write("\nClustering Results:")
+
 # Footer section
 st.caption('Copyright © Zharfan Fasya H 2024')
